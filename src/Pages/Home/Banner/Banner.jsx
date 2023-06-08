@@ -6,6 +6,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+import "./Banner.css";
+
 import img1 from '../../../assets/Banner/camp1.jpg'
 import img2 from '../../../assets/Banner/camp2.jpg'
 import img3 from '../../../assets/Banner/camp3.jpg'
