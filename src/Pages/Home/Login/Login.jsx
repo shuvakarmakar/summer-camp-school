@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -34,10 +34,6 @@ const Login = () => {
             });
     };
 
-
-    const handleGoogleLogin = () => {
-        // Handle Google login logic here
-    };
 
     return (
         <>
@@ -91,9 +87,7 @@ const Login = () => {
                                 </div>
                             </form>
                             <p className='my-4 text-center'>New to Summer School Camp? Please <Link className='text-amber-300' to='/signup'>Sign Up</Link></p>
-                            <button onClick={handleGoogleLogin} className="btn btn-outline">
-                                <FaGoogle /> SignIn With Google
-                            </button>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>

@@ -3,25 +3,43 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors }, watch } = useForm();
     const navigate = useNavigate();
     const { createUser, updateUserProfile } = useContext(AuthContext);
 
-    const password = watch("password");
+    const password = watch('password', '');
 
     const onSubmit = (data) => {
         createUser(data.email, data.password)
             .then(loggedUser => {
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        navigate('/');
-                        reset();
-                        Swal.fire('Sign Up Complete');
+                    .then(() => {
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Sign Up Successful',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
                     })
                     .catch((error) => {
                         console.log(error);
@@ -87,6 +105,7 @@ const SignUp = () => {
                             />
                             {errors.password && <span className="text-red-700">{errors.password.message}</span>}
                         </div>
+
                         {/* Confirm Password */}
                         <div className="form-control mt-4">
                             <label className="label">
@@ -95,7 +114,7 @@ const SignUp = () => {
                             <input
                                 type="password"
                                 {...register('confirmPassword', {
-                                    validate: (value) => value === password || "Passwords do not match",
+                                    validate: (value) => value === password || 'Passwords do not match',
                                 })}
                                 name="confirmPassword"
                                 placeholder="Confirm Password"
@@ -121,6 +140,7 @@ const SignUp = () => {
                         </div>
                     </form>
                     <p className="text-center text-gray-600 my-4">Already have an account? <Link to="/login" className="text-purple-600">Please login</Link></p>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

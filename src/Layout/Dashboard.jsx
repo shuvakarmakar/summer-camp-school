@@ -17,6 +17,7 @@ const Dashboard = () => {
                 
                             <li><NavLink to="/dashboard/myclass"><FaHome></FaHome>My Selcted Class</NavLink></li>
                             <li><NavLink to="/dashboard/myenrolledclass"><FaHome></FaHome>My Enrolled Class</NavLink></li>
+                            <li><NavLink to="/dashboard/manageusers"><FaHome></FaHome>Manage Users</NavLink></li>
                             
 
                     <div className="divider"></div>

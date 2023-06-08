@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import useAuth from './useAuth';
-const useCart = () => {
+const useClasses = () => {
     const { user } = useAuth();
     const { refetch, data: classes = [] } = useQuery({
         queryKey: ['classes', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classes?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/selectclass?email=${user?.email}`)
             return res.json();
         },
 
@@ -14,7 +14,7 @@ const useCart = () => {
     return [classes, refetch]
 
 }
-export default useCart;
+export default useClasses;
 
 
 // 
