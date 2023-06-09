@@ -22,7 +22,7 @@ const Dashboard = () => {
 
                     {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/manageClasses"><FaHome></FaHome>Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manageClasses"><FaLaptopCode></FaLaptopCode> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manageUsers"><FaUser></FaUser> Manage Users</NavLink></li>
                             <div className="divider"></div>
                             <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
@@ -33,7 +33,7 @@ const Dashboard = () => {
 
                             isInstructor ? <>
                                 <li><NavLink to="/dashboard/addaclass"><FaPlusSquare></FaPlusSquare>Add A Class</NavLink></li>
-                                <li><NavLink to="/dashboard/myclass"><FaLaptopCode></FaLaptopCode>My Selcted Class</NavLink></li>
+                                <li><NavLink to="/dashboard/myclasses"><FaLaptopCode></FaLaptopCode>My Classes</NavLink></li>
                                 <div className="divider"></div>
                                 <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
                                 <li><NavLink to="/classes">Classes</NavLink></li>
