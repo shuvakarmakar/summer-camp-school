@@ -1,4 +1,4 @@
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaHome, FaLaptopCode, FaPlusSquare, FaUser } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -24,26 +24,34 @@ const Dashboard = () => {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/manageClasses"><FaHome></FaHome>Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manageUsers"><FaUser></FaUser> Manage Users</NavLink></li>
+                            <div className="divider"></div>
+                            <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
+                            <li><NavLink to="/classes">Classes</NavLink></li>
+                            <li><NavLink to="/instructors">Instructors</NavLink></li>
+                            <li></li>
                         </> :
 
-                        isInstructor ? <>
-                            
-                        </> :<>
-                        
-                        </>
-                        
+                            isInstructor ? <>
+                                <li><NavLink to="/dashboard/addaclass"><FaPlusSquare></FaPlusSquare>Add A Class</NavLink></li>
+                                <li><NavLink to="/dashboard/myclass"><FaLaptopCode></FaLaptopCode>My Selcted Class</NavLink></li>
+                                <div className="divider"></div>
+                                <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
+                                <li><NavLink to="/classes">Classes</NavLink></li>
+                                <li><NavLink to="/instructors">Instructors</NavLink></li>
+                                <li></li>
+
+                            </> : <>
+                                <li><NavLink to="/dashboard/myclass"><FaHome></FaHome>My Selcted Class</NavLink></li>
+                                <li><NavLink to="/dashboard/myenrolledclass"><FaLaptopCode></FaLaptopCode> My Enrolled Class</NavLink></li>
+
+                                <div className="divider"></div>
+                                <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
+                                <li><NavLink to="/classes">Classes</NavLink></li>
+                                <li><NavLink to="/instructors">Instructors</NavLink></li>
+                                <li></li>
+                            </>
+
                     }
-
-                    <li><NavLink to="/dashboard/myclass"><FaHome></FaHome>My Selcted Class</NavLink></li>
-                    <li><NavLink to="/dashboard/myenrolledclass"><FaHome></FaHome>My Enrolled Class</NavLink></li>
-                    <li><NavLink to="/dashboard/manageusers"><FaHome></FaHome>Manage Users</NavLink></li>
-
-
-                    <div className="divider"></div>
-                    <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
-                    <li><NavLink to="/classes">Classes</NavLink></li>
-                    <li><NavLink to="/instructors">Instructors</NavLink></li>
-                    <li></li>
                 </ul>
 
             </div>
