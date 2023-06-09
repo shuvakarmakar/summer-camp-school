@@ -2,6 +2,10 @@ import { FaHome } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
+
+    // TODO: load data from the server to have dynamic isAdmin based od Data
+    const isAdmin = true;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
