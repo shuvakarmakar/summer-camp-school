@@ -5,6 +5,8 @@ import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
+    // const [isAdmin] = useAdmin();
+    // const [isInstructor] = useInstructor();
 
     const handleLogout = () => {
         logOut()
@@ -15,7 +17,7 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/dashboard/myclass ">Dashboard </Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
     </>
 
     return (

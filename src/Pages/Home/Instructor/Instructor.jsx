@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import useInstructor from "../../../hooks/useInstructor";
+
 
 const Instructor = () => {
-  const [instructors] = useInstructor();
+  const [instructors, setInstructors] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/instructors')
+            .then(res => res.json())
+            .then(data => {
+                setInstructors(data)
+            })
+    }, [])
 
   return (
     <>

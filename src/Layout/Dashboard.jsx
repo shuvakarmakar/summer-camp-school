@@ -1,11 +1,15 @@
 import { FaHome, FaLaptopCode, FaPlusSquare, FaUser } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor"
 
 const Dashboard = () => {
 
     // TODO: load data from the server to have dynamic isAdmin based od Data
-    const isAdmin = true;
-    const isInstructor = true;
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    console.log(isInstructor);
 
     return (
         <div className="drawer lg:drawer-open">
