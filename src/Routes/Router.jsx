@@ -14,6 +14,7 @@ import Instructor from "../Pages/Home/Instructor/Instructor";
 import Login from "../Pages/Home/Login/Login";
 import SignUp from "../Pages/Home/SignUp/SignUp";
 import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -72,11 +73,11 @@ export const router = createBrowserRouter([
             // Instructor Route
             {
                 path: 'addaclass',
-                element: <AddAClass></AddAClass>
+                element: <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
             },
             {
                 path: 'myclasses',
-                element: <MyClasses></MyClasses>
+                element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
             }
         ]
     }

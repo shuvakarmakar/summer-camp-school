@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 
 
 const ClassesCard = ({ classItem }) => {
-    const { _id, image, classname, availableSeats, price, instructor } = classItem;
+    const { _id, image, className, instructorName, instructorEmail, availableSeat, price, status } = classItem;
     const { user } = useAuth();
     // const [, refetch] = useClasses();
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ const ClassesCard = ({ classItem }) => {
     const handleSelectClass = classItem => {
         console.log(classItem);
         if (user && user.email) {
-            const selectClass = { classId: _id, image, classname, instructor, availableSeats, price, email: user.email }
+            const selectClass = { classId: _id, image, className, instructorName,instructorEmail, status, availableSeat, price, email: user.email }
             fetch("http://localhost:5000/selectclass", {
                 method: 'POST',
                 headers: {
@@ -57,9 +57,9 @@ const ClassesCard = ({ classItem }) => {
                 <img src={image} alt="Shoes" className="object-cover w-full h-48" />
             </figure>
             <div className="px-6 py-4">
-                <h2 className="text-2xl font-semibold mb-2">{classname}</h2>
-                <p className="text-gray-600 mb-2 font-semibold">Instructor: {instructor}</p>
-                <p className="text-gray-600 mb-2 font-semibold">Available Seats: {availableSeats}</p>
+                <h2 className="text-2xl font-semibold mb-2">{className}</h2>
+                <p className="text-gray-600 mb-2 font-semibold">Instructor: {instructorName}</p>
+                <p className="text-gray-600 mb-2 font-semibold">Available Seats: {availableSeat}</p>
                 <p className="text-gray-600 mb-2 font-semibold">Price: ${price}</p>
             </div>
             <div className="px-6 py-4 flex justify-end">
