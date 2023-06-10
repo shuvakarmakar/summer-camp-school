@@ -1,3 +1,4 @@
+import { Slide } from "react-awesome-reveal";
 import { FaHome, FaLaptopCode, FaPlusSquare, FaUser } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
@@ -22,6 +23,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                <Slide direction="left" triggerOnce>
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
 
                     {
@@ -57,7 +59,7 @@ const Dashboard = () => {
 
                     }
                 </ul>
-
+                </Slide>
             </div>
         </div>
     );
