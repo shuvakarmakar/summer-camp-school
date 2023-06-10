@@ -1,18 +1,54 @@
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
-
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const ClassesCard = ({ classItem }) => {
     const { _id, image, className, instructorName, instructorEmail, availableSeat, price, status } = classItem;
     const { user } = useAuth();
-    // const [, refetch] = useClasses();
     const navigate = useNavigate();
 
-    const handleSelectClass = classItem => {
-        console.log(classItem);
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
+    const handleSelectClass = () => {
         if (user && user.email) {
-            const selectClass = { classId: _id, image, className, instructorName,instructorEmail, status, availableSeat, price, email: user.email }
+            if (availableSeat === 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'No available seats',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                return;
+            }
+
+            if (isAdmin || isInstructor) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Only students can select a class',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                return;
+            }
+
+            const selectClass = {
+                classId: _id,
+                image,
+                className,
+                instructorName,
+                instructorEmail,
+                status,
+                availableSeat,
+                price,
+                email: user.email,
+                enrolled: 0
+            };
+
             fetch("http://localhost:5000/selectclass", {
                 method: 'POST',
                 headers: {
@@ -23,18 +59,16 @@ const ClassesCard = ({ classItem }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        // refetch(); //refetch cart to update the number of items in the cart
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
                             title: 'Added Class Successfully',
                             showConfirmButton: false,
                             timer: 1500
-                        })
+                        });
                     }
-                })
-        }
-        else {
+                });
+        } else {
             Swal.fire({
                 title: 'Please Login to Select Class',
                 icon: 'warning',
@@ -44,15 +78,14 @@ const ClassesCard = ({ classItem }) => {
                 confirmButtonText: 'Login Now'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate('/login', { state: { from: location } })
+                    navigate('/login', { state: { from: window.location.pathname } });
                 }
-            })
+            });
         }
-    }
-
+    };
 
     return (
-        <div className="card w-96 bg-white rounded-lg shadow-lg">
+        <div className={`card w-96 bg-white rounded-lg shadow-lg ${availableSeat === 0 ? 'bg-red-100' : ''}`}>
             <figure className="overflow-hidden rounded-t-lg">
                 <img src={image} alt="Shoes" className="object-cover w-full h-48" />
             </figure>
@@ -63,7 +96,13 @@ const ClassesCard = ({ classItem }) => {
                 <p className="text-gray-600 mb-2 font-semibold">Price: ${price}</p>
             </div>
             <div className="px-6 py-4 flex justify-end">
-                <button onClick={() => handleSelectClass(classItem)} className="btn btn-primary text-white">Select Class</button>
+                <button
+                    onClick={handleSelectClass}
+                    disabled={availableSeat === 0 || isAdmin || isInstructor}
+                    className="btn btn-primary text-white"
+                >
+                    Select Class
+                </button>
             </div>
         </div>
     );

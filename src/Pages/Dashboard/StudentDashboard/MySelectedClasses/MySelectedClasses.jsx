@@ -73,7 +73,7 @@ const MySelectedClasses = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    {classItem.classname}
+                                    {classItem.className}
                                 </td>
                                 <td className="text-end">${classItem.price}</td>
                                 <td>

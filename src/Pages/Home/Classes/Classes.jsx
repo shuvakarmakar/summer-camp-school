@@ -7,9 +7,9 @@ const Classes = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
-            .then(res => res.json())
-            .then(data => {
+        fetch("http://localhost:5000/classes?status=approved")
+            .then((res) => res.json())
+            .then((data) => {
                 setClasses(data);
                 setLoading(false);
             });
@@ -26,10 +26,9 @@ const Classes = () => {
                     <p>Loading...</p>
                 ) : (
                     <div className="grid gap-4 lg:grid-cols-3">
-                        {classes.map(classItem => <ClassesCard
-                            key={classItem._id}
-                            classItem={classItem}
-                        ></ClassesCard>)}
+                        {classes.map((classItem) => (
+                            <ClassesCard key={classItem._id} classItem={classItem} />
+                        ))}
                     </div>
                 )}
             </div>
