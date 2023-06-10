@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { FaMoneyBill, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useClasses from "../../../../hooks/useClasses";
 
@@ -80,7 +81,7 @@ const MySelectedClasses = () => {
                                     <button onClick={() => handleDelete(classItem)} className="btn btn-ghost bg-red-700 text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-ghost bg-blue-700 text-white"><FaMoneyBill></FaMoneyBill></button>
+                                    <Link to='/dashboard/payment'><button className="btn btn-ghost bg-blue-700 text-white"><FaMoneyBill></FaMoneyBill></button></Link>
                                 </td>
                             </tr>)
                         }
