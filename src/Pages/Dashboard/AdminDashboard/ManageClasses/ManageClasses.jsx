@@ -10,7 +10,7 @@ const ManageClasses = () => {
 
     useEffect(() => {
         if (user) {
-            fetch("http://localhost:5000/classes")
+            fetch("https://summer-camp-school-server-shuvakarmakar.vercel.app/classes")
                 .then((res) => res.json())
                 .then((data) => {
                     setClasses(data);
@@ -23,7 +23,7 @@ const ManageClasses = () => {
 
     const handleApprove = (classId) => {
         // Send a request to the server to update the class status to "approved"
-        fetch(`http://localhost:5000/classes/${classId}`, {
+        fetch(`https://summer-camp-school-server-shuvakarmakar.vercel.app/classes/${classId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const ManageClasses = () => {
 
     const handleDeny = (classId) => {
         // Send a request to the server to update the class status to "denied"
-        fetch(`http://localhost:5000/classes/${classId}`, {
+        fetch(`https://summer-camp-school-server-shuvakarmakar.vercel.app/classes/${classId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

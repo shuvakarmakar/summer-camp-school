@@ -49,7 +49,7 @@ const ClassesCard = ({ classItem }) => {
                 enrolled: 0
             };
 
-            fetch("http://localhost:5000/selectclass", {
+            fetch("https://summer-camp-school-server-shuvakarmakar.vercel.app/selectclass", {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

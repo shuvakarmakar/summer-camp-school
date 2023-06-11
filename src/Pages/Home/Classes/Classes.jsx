@@ -7,7 +7,7 @@ const Classes = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:5000/classes?status=approved")
+        fetch("https://summer-camp-school-server-shuvakarmakar.vercel.app/classes?status=approved")
             .then((res) => res.json())
             .then((data) => {
                 setClasses(data);
