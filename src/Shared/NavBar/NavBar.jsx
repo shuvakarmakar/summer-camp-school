@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import logo from "../../assets/logo@2x.png"
 
 
 const Navbar = () => {
@@ -31,7 +32,8 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <img src='' alt="" />
+                <img src={logo} alt="" style={{ width: '150px', height: '70px' }} />
+
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
