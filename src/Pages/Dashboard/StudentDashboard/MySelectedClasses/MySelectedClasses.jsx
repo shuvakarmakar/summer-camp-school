@@ -37,12 +37,12 @@ const MySelectedClasses = () => {
         })
     }
     return (
-        <div className="w-full">
+        <div className="w-1/2 lg:w-full">
             <Helmet>
                 <title>Summer Camp || Student Selected Classes</title>
             </Helmet>
             <h2 className="text-center font-semibold text-2xl">My Selected Classes : {classes.length}</h2>
-            <div className="overflow-x-auto m-10">
+            <div className="overflow-x-auto lg:m-10">
                 <table className="table w-full">
                     {/* head */}
                     <thead>

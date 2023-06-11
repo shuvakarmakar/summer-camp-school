@@ -21,12 +21,12 @@ const MyEnrolledClasses = () => {
     }, [axiosSecure, user.email]);
 
     return (
-        <div className="w-full">
+        <div className="lg:w-full">
             <Helmet>
                 <title>Summer Camp || Student Enrolled Classes</title>
             </Helmet>
             <h2 className="text-center font-semibold text-2xl">My Enrolled Classes: {enrolledClasses.length}</h2>
-            <div className="overflow-x-auto m-10">
+            <div className="overflow-x-auto lg:m-10">
                 <table className="table w-full">
                     {/* Head */}
                     <thead>
