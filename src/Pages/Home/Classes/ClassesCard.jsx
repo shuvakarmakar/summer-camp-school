@@ -5,7 +5,7 @@ import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
 
 const ClassesCard = ({ classItem }) => {
-    const { _id, image, className, instructorName, instructorEmail, availableSeat, price, status } = classItem;
+    const { _id, image, className, instructorName, instructorEmail, availableSeat, price, status, enrolled } = classItem;
     const { user } = useAuth();
     const navigate = useNavigate();
 
@@ -94,6 +94,7 @@ const ClassesCard = ({ classItem }) => {
                 <p className="text-gray-600 mb-2 font-semibold">Instructor: {instructorName}</p>
                 <p className="text-gray-600 mb-2 font-semibold">Available Seats: {availableSeat}</p>
                 <p className="text-gray-600 mb-2 font-semibold">Price: ${price}</p>
+                <p className="text-gray-600 mb-2 font-semibold">Enrolled Student: {enrolled}</p>
             </div>
             <div className="px-6 py-4 flex justify-end">
                 <button
