@@ -1,5 +1,5 @@
 import { Slide } from "react-awesome-reveal";
-import { FaHome, FaLaptopCode, FaPlusSquare, FaUser } from "react-icons/fa";
+import { FaHome, FaLaptopCode, FaMoneyBill, FaPlusSquare, FaUser } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
@@ -102,6 +102,12 @@ const Dashboard = () => {
                                         <NavLink to="/dashboard/myenrolledclass">
                                             <FaLaptopCode className="mr-2" />
                                             My Enrolled Class
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/dashboard/paymenthistory">
+                                            <FaMoneyBill className="mr-2" />
+                                            My Payment History
                                         </NavLink>
                                     </li>
                                     <div className="divider"></div>

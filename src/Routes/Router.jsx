@@ -8,6 +8,7 @@ import MyClasses from "../Pages/Dashboard/InstructorDashboard/MyClasses/MyClasse
 import MyEnrolledClasses from "../Pages/Dashboard/StudentDashboard/MyEnrolledClasses/MyEnrolledClasses";
 import MySelectedClasses from "../Pages/Dashboard/StudentDashboard/MySelectedClasses/MySelectedClasses";
 import Payment from "../Pages/Dashboard/StudentDashboard/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/StudentDashboard/Payment/PaymentHistory";
 import Error from "../Pages/Error/Error";
 import Classes from "../Pages/Home/Classes/Classes";
 import Home from "../Pages/Home/Home/Home";
@@ -20,30 +21,30 @@ import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Main></Main>,
-      children: [
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-        {
-            path: '/login',
-            element: <Login></Login>
-        },
-        {
-            path: '/signup',
-            element: <SignUp></SignUp>
-        },
-        {
-            path: '/instructors',
-            element: <Instructor></Instructor>
-        },
-        {
-            path: '/classes',
-            element: <Classes></Classes>
-        }
-      ]
+        path: "/",
+        element: <Main></Main>,
+        children: [
+            {
+                path: '/',
+                element: <Home></Home>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/signup',
+                element: <SignUp></SignUp>
+            },
+            {
+                path: '/instructors',
+                element: <Instructor></Instructor>
+            },
+            {
+                path: '/classes',
+                element: <Classes></Classes>
+            }
+        ]
     },
     {
         path: '*',
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute> ,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             // Student Route
             {
@@ -84,8 +85,12 @@ export const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params}) => fetch(`https://summer-camp-school-server-shuvakarmakar.vercel.app/payment/${params.id}`)
+                loader: ({ params }) => fetch(`https://summer-camp-school-server-shuvakarmakar.vercel.app/payment/${params.id}`)
+            },
+            {
+                path: 'paymenthistory',
+                element: <PaymentHistory></PaymentHistory>
             }
         ]
     }
-  ]);
+]);
