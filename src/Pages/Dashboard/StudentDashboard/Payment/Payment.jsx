@@ -14,7 +14,7 @@ const Payment = () => {
     const { price, instructorName } = classData;
 
     return (
-        <div className="w-1/2">
+        <div className="w-full">
             <Helmet>
                 <title>Summer Camp || Payment</title>
             </Helmet>
