@@ -22,19 +22,23 @@ const PopularCourses = () => {
     // Sort the popularClasses array in descending order based on enrolled students
     popularClasses.sort((a, b) => b.enrolled - a.enrolled);
 
+    const limitedPopularClasses = popularClasses.slice(0, 6);
+
     return (
         <div>
             <h2 className="text-center text-4xl my-6 font-semibold">Popular Courses</h2>
-            <Fade direction='left'>
-                <div className='grid lg:grid-cols-3 gap-5'>
-                    {popularClasses.map((classItem) => (
+            <Fade direction="left">
+                <div className="grid lg:grid-cols-3 gap-5">
+                    {limitedPopularClasses.map((classItem) => (
                         <div key={classItem._id}>
                             <div className="card w-96 h-96 glass lg:m-6">
-                                <figure><img src={classItem.image} alt="car!" /></figure>
+                                <figure>
+                                    <img src={classItem.image} alt="car!" />
+                                </figure>
                                 <div className="card-body">
                                     <h2 className="card-title">{classItem.className}</h2>
                                     <p>Instructor: {classItem.instructorName}</p>
-                                    <p>Student Enrolled: {classItem.enrolled}</p>
+                                    <p>Students Enrolled: {classItem.enrolled}</p>
                                 </div>
                             </div>
                         </div>
