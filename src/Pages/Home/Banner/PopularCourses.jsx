@@ -19,6 +19,9 @@ const PopularCourses = () => {
         fetchPopularClasses();
     }, []);
 
+    // Sort the popularClasses array in descending order based on enrolled students
+    popularClasses.sort((a, b) => b.enrolled - a.enrolled);
+
     return (
         <div>
             <h2 className="text-center text-4xl my-6 font-semibold">Popular Courses</h2>

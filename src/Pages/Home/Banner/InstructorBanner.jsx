@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 const InstructorBanner = () => {
     const [instructors, setInstructors] = useState([]);
@@ -14,7 +14,7 @@ const InstructorBanner = () => {
 
     return (
         <>
-            <Zoom>
+            <Fade>
                 <div className="container mx-auto">
                     <h2 className="text-center text-4xl my-6 font-semibold">Popular Instructors</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -30,7 +30,7 @@ const InstructorBanner = () => {
                             </div>
                         ))}
                     </div>
-                </div></Zoom>
+                </div></Fade>
         </>
     );
 };
