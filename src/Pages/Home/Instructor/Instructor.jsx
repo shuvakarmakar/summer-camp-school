@@ -29,10 +29,11 @@ const Instructor = () => {
                 <h2 className="text-xl font-semibold">{instructor.name}</h2>
                 <p className="text-gray-500">Email: {instructor.email}</p>
                 <div className="mt-6">
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-                    More Details
+                  <button className="bg-green-400 hover:bg-green-500 text-white py-2 px-4 rounded-xl">
+                    Explore Further
                   </button>
                 </div>
+
               </div>
             </div>
           ))}
